@@ -2,6 +2,7 @@
 
 namespace Nylas\Events;
 
+use DateTimeZone;
 use Nylas\Utilities\API;
 use Nylas\Utilities\Helper;
 use Nylas\Utilities\Options;
@@ -381,7 +382,9 @@ class Event
             // timespan
             V::keySet(
                 V::key('end_time', V::timestampType()),
-                V::key('start_time', V::timestampType())
+                V::key('start_time', V::timestampType()),
+                V::key('start_timezone', V::in(DateTimeZone::listIdentifiers())),
+                V::key('end_timezone', V::in(DateTimeZone::listIdentifiers()))
             ),
 
             // date span
