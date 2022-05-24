@@ -345,7 +345,8 @@ class Event
             V::key('email', V::email()),
             V::keyOptional('name', V::stringType()),
             V::keyOptional('status', V::in(['yes', 'no', 'maybe', 'noreply'])),
-            V::keyOptional('comment', V::stringType())
+            V::keyOptional('comment', V::stringType()),
+            V::keyOptional('phone_number', V::anyOf(V::nullType(), V::phone()))
         ));
 
         return
@@ -360,6 +361,7 @@ class Event
             V::keyOptional('participants', $participantsRule),
             V::keyOptional('conferencing', $this->conferenceRules()),
             V::keyOptional('notify_participants', V::boolType()),
+            V::keyOptional('hide_participants', V::boolType()),
         ];
     }
 
