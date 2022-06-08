@@ -139,6 +139,37 @@ class Calendar
     // ------------------------------------------------------------------------------
 
     /**
+     * get free-busy list
+     *
+     * @param array $params
+     *
+     * @return array
+     */
+    public function getFreeBusyList(array $params = []): array
+    {
+        $accessToken = $this->options->getAccessToken();
+
+        $rule = V::keySet(
+            V::keyOptional('start_time', V::timestampType()),
+            V::keyOptional('end_time', V::timestampType()),
+            V::keyOptional('emails', V::arrayType()->each(V::stringType()))
+        );
+
+        V::doValidate($rule, $params);
+        V::doValidate(V::stringType()->notEmpty(), $accessToken);
+
+        $header = ['Authorization' => $accessToken];
+
+        return $this->options
+            ->getSync()
+            ->setFormParams($params)
+            ->setHeaderParams($header)
+            ->post(API::LIST['freeBusy']);
+    }
+
+    // ------------------------------------------------------------------------------
+
+    /**
      * rules for add calendar
      *
      * @return array
