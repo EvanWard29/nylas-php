@@ -385,8 +385,8 @@ class Event
             V::keySet(
                 V::key('end_time', V::timestampType()),
                 V::key('start_time', V::timestampType()),
-                V::key('start_timezone', V::in(DateTimeZone::listIdentifiers())),
-                V::key('end_timezone', V::in(DateTimeZone::listIdentifiers()))
+                V::keyOptional('start_timezone', V::stringType()),
+                V::keyOptional('end_timezone', V::stringType())
             ),
 
             // date span
