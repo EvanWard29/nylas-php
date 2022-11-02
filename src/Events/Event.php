@@ -346,7 +346,7 @@ class Event
             V::keyOptional('name', V::stringType()),
             V::keyOptional('status', V::in(['yes', 'no', 'maybe', 'noreply'])),
             V::keyOptional('comment', V::stringType()),
-            V::keyOptional('phone_number', V::anyOf(V::nullType(), V::phone()))
+            V::keyOptional('phone_number', V::phone())
         ));
 
         return
