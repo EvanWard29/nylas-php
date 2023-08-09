@@ -442,7 +442,14 @@ class Event
             ))
         );
 
-        return V::oneOf($webEx, $zoomMeeting, $goToMeeting, $googleMeet);
+        $microsoftTeams = V::keySet(
+            V::key('provider', V::equals('Microsoft Teams')),
+            V::key('details', V::keySet(
+                V::key('url', V::stringType())
+            ))
+        );
+
+        return V::oneOf($webEx, $zoomMeeting, $goToMeeting, $googleMeet, $microsoftTeams);
     }
 
     // ------------------------------------------------------------------------------
