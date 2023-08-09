@@ -418,8 +418,8 @@ class Event
         $zoomMeeting = V::keySet(
             V::key('provider', V::equals('Zoom Meeting')),
             V::key('details', V::keySet(
-                V::key('meeting_code', V::stringType()),
-                V::key('password', V::stringType()),
+                V::keyOptional('meeting_code', V::stringType()),
+                V::keyOptional('password', V::stringType()),
                 V::key('url', V::stringType()),
             ))
         );
@@ -436,8 +436,8 @@ class Event
         $googleMeet = V::keySet(
             V::key('provider', V::equals('Google Meet')),
             V::key('details', V::keySet(
-                V::key('phone', V::simpleArray()),
-                V::key('pin', V::stringType()),
+                V::keyOptional('phone', V::simpleArray()),
+                V::keyOptional('pin', V::stringType()),
                 V::key('url', V::stringType()),
             ))
         );
