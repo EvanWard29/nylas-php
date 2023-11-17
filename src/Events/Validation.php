@@ -288,7 +288,14 @@ class Validation
             ))
         );
 
-        return V::anyOf($autocreate, $webEx, $zoomMeeting, $goToMeeting, $googleMeet);
+        $microsoftTeams = V::keySet(
+            V::key('provider', V::equals('Microsoft Teams')),
+            V::key('details', V::keySet(
+                V::key('url', V::stringType())
+            ))
+        );
+
+        return V::anyOf($autocreate, $webEx, $zoomMeeting, $goToMeeting, $googleMeet, $microsoftTeams);
     }
 
     // ------------------------------------------------------------------------------
