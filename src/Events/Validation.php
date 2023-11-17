@@ -70,7 +70,8 @@ class Validation
             V::keyOptional('notifications', self::notificationRules()),
             V::keyOptional('reminder_method', V::in(['email', 'popup', 'display', 'sound'])),
             V::keyOptional('reminder_minutes', V::regex('#\[(|-1|[0-9]{1,})\]#')),
-            V::keyOptional('round_robin_order', V::simpleArray(V::email()))
+            V::keyOptional('round_robin_order', V::simpleArray(V::email())),
+            V::keyOptional('hide_participants', V::boolType())
         );
     }
 
