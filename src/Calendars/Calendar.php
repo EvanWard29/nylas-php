@@ -94,7 +94,7 @@ class Calendar
     {
         V::doValidate(V::keySet(
             V::key('name', V::stringType()::notEmpty()),
-            V::keyOptional('timezone', V::in(DateTimeZone::listIdentifiers())),
+            V::keyOptional('timezone', V::in(DateTimeZone::listIdentifiers(DateTimeZone::ALL_WITH_BC))),
             V::keyOptional('location', V::stringType()::notEmpty()),
             V::keyOptional('metadata', self::metadataRules()),
             V::keyOptional('description', V::stringType()::notEmpty()),
@@ -161,7 +161,7 @@ class Calendar
     {
         V::doValidate(V::keySet(
             V::key('name', V::stringType()::notEmpty()),
-            V::keyOptional('timezone', V::in(DateTimeZone::listIdentifiers())),
+            V::keyOptional('timezone', V::in(DateTimeZone::listIdentifiers(DateTimeZone::ALL_WITH_BC))),
             V::keyOptional('location', V::stringType()::notEmpty()),
             V::keyOptional('metadata', self::metadataRules()),
             V::keyOptional('description', V::stringType()::notEmpty()),

@@ -123,7 +123,7 @@ class Validation
     {
         return V::keySet(
             V::key('rrule', V::simpleArray(V::stringType()::notEmpty())),
-            V::key('timezone', V::in(DateTimeZone::listIdentifiers())),
+            V::key('timezone', V::in(DateTimeZone::listIdentifiers(DateTimeZone::ALL_WITH_BC))),
         );
     }
 
@@ -197,14 +197,14 @@ class Validation
             // time
             V::keySet(
                 V::keyOptional('time', V::timestampType()),
-                V::keyOptional('timezone', V::in(DateTimeZone::listIdentifiers()))
+                V::keyOptional('timezone', V::in(DateTimeZone::listIdentifiers(DateTimeZone::ALL_WITH_BC)))
             ),
             // timespan
             V::keySet(
                 V::keyOptional('end_time', V::timestampType()),
                 V::keyOptional('start_time', V::timestampType()),
-                V::keyOptional('end_timezone', V::in(DateTimeZone::listIdentifiers())),
-                V::keyOptional('start_timezone', V::in(DateTimeZone::listIdentifiers()))
+                V::keyOptional('end_timezone', V::in(DateTimeZone::listIdentifiers(DateTimeZone::ALL_WITH_BC))),
+                V::keyOptional('start_timezone', V::in(DateTimeZone::listIdentifiers(DateTimeZone::ALL_WITH_BC)))
             ),
         );
     }

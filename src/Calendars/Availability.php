@@ -121,7 +121,7 @@ class Availability
             V::key('start', V::time('H:i')),
             V::key('days', V::simpleArray(V::in(['0', '1', '2', '3', '4', '5', '6']))),
             V::key('emails', $emailsRules),
-            V::key('timezone', V::in(DateTimeZone::listIdentifiers())),
+            V::key('timezone', V::in(DateTimeZone::listIdentifiers(DateTimeZone::ALL_WITH_BC))),
             V::key('object_type', V::equals('open_hours')),
         );
 
